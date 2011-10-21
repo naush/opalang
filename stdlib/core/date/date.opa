@@ -466,6 +466,15 @@ type time_t = external
   get_year : Date.date -> Date.year = Date_private.time_local_year
 
   /**
+   * Returns the time zone represented by this date interpreted in the local time zone.
+   * If you need to completely decompose a date consider using {!Date.to_human_readable}.
+   *
+   * @param date A date
+   * @return The time zone represented by [date].
+  **/
+  get_time_zone : Date.date -> Date.time_zone = Date_private.time_local_time_zone
+
+  /**
    * Returns the week number corresponding to the given date.
    *
    * This routine follows ISO 8601 and hence assumes that "the first week of a year
@@ -834,6 +843,7 @@ type time_t = external
    * - [%w] day of week (0..6); 0 is Sunday
    * - [%y] last two digits of year (00..99)
    * - [%Y] year (ex. 2010)
+   * - [%z] +hhmm numeric timezone (e.g., -0400)
    *
    * By default, numeric fields are padded with zeroes. The following optional flags
    * may follow `%':
@@ -850,7 +860,6 @@ type time_t = external
    * - [%U] week number of year with Sunday as first day of week (00..53)
    * - [%V] week number of year with Monday as first day of week (01..53)
    * - [%W] week number of year with Monday as first day of week (00..53)
-   * - [%z] +hhmm numeric timezone (e.g., -0400)
    * - [%:z] +hh:mm numeric timezone (e.g., -04:00)
    *
    * Also the padding directives are not supported:

@@ -92,6 +92,9 @@
    ##register local_year : time_t -> int
    let local_year t = Time.local_year (wrap t)
 
+   ##register local_time_zone : time_t -> int
+   let local_time_zone = Time.local_time_zone (wrap t)
+
    ##register local_wday : time_t -> int
    let local_wday t = Time.local_wday (wrap t)
 

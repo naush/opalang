@@ -101,6 +101,7 @@ let local_hour time = (localtime time).Unix.tm_hour
 let local_mday time = (localtime time).Unix.tm_mday
 let local_mon time = (localtime time).Unix.tm_mon
 let local_year time = (localtime time).Unix.tm_year + 1900
+let local_time_zone time = (localtime time).Unix.localtime - (localtime time).Unix.gmtime
 let local_wday time = (localtime time).Unix.tm_wday
 let local_yday time = (localtime time).Unix.tm_yday
 let local_isdst time = (localtime time).Unix.tm_isdst

@@ -114,6 +114,9 @@ import stdlib.core.parser
   time_local_year : Date.date -> int =
     date_in(%%BslTime.local_year%% : time_t -> int)   // Year
 
+  time_local_time_zone : Date.date -> int =
+    date_in(%%BslTime.local_time_zone%% : time_t -> int) // Time Zone 0000..9999
+
   time_local_wday : Date.date -> int =
     date_in(%%BslTime.local_wday%% : time_t -> int)   // Day of week (Sunday is 0)
 
@@ -181,6 +184,7 @@ import stdlib.core.parser
       , ("x", true,  ((p, d) -> pad(Date.get_msec(d), p, {pad_with_zeros}, 3)))
       , ("y", false, ((_, d) -> pad(mod(Date.get_year(d), 100), {pad_with_zeros}, {pad_with_zeros}, 2)))
       , ("Y", true,  ((p, d) -> pad(Date.get_year(d), p, {pad_with_spaces}, 4)))
+      , ("z", true,  ((p, d) -> pad(Date.get_time_zone(d), p, {pad_with_spaces}, 4)))
       ]
 
     padding_flag_parser = parser
